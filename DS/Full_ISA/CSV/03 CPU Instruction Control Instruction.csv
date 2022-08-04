@@ -1,0 +1,4 @@
+Mnemonic,Instruction,
+EHB,Execution Hazard Barrier,Release 2 Only
+NOP,No Operation,
+SSNOP,Superscalar No Operation,

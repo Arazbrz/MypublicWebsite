@@ -1,0 +1,5 @@
+Mnemonic,Instruction
+LDC2,Load Doubleword to Coprocessor 2
+LWC2,Load Word to Coprocessor 2
+SDC2,Store Doubleword from Coprocessor 2
+SWC2,Store Word from Coprocessor 2

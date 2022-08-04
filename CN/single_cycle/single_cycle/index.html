@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My Portofolio">
+    <meta name="author" content="Araz B Karimi">
+    
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>Single Cycle MIPS Processor - Araz Karimi | Personal Website</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="../../..">Araz Karimi | Personal Website</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../../ECE/overview.md">Electrical Engineering</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../../DS/overview.md">Example Projects</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../overview.md">Contact</a>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#required-tools-for-this-lab">Required Tools for this lab</a></li>
+        <li class="first-level "><a href="#lab-assignment-1">Lab Assignment 1</a></li>
+        <li class="first-level "><a href="#what-to-submit">What to Submit</a></li>
+        <li class="first-level "><a href="#some-notes">Some Notes</a></li>
+        <li class="first-level "><a href="#truth-table">Truth Table</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+
+<H1>Single Cycle MIPS Processor</H1>
+
+
+
+<p><b>Author:</b> Authors - Yehowshua Immanuel, Saloni Oswal, Tushar Krishna</p>
+
+
+
+<a href="../pdfs/single_cycle.pdf"><strong>PDF Version</strong></a>
+
+
+<p>Go ahead and <a href="../assignment.zip">download</a> the assignment.</p>
+<h1 id="required-tools-for-this-lab">Required Tools for this lab<a class="headerlink" href="#required-tools-for-this-lab" title="Permanent link">&para;</a></h1>
+<ul>
+<li><a href="/resources/brew/brew">Brew</a></li>
+<li><a href="/resources/cocotb/cocotb">iverilog</a></li>
+<li><a href="/resources/VCD/vcd/">GTKwave or Scansion</a></li>
+</ul>
+<h1 id="lab-assignment-1">Lab Assignment 1<a class="headerlink" href="#lab-assignment-1" title="Permanent link">&para;</a></h1>
+<p><em>30 points + 20 points extra-credit</em></p>
+<ol>
+<li>
+<p>Simulate the verilog MIPS processor by running <code>make</code> in the RTL directory.</p>
+<p>Take a screenshot of the resulting waveform</p>
+</li>
+<li>
+<p>Browse through the codebase and connect the different modules in the diagram below. A few lines have already been filled in for you.</p>
+<p>It might help to start by browsing <code>mips.v</code>.</p>
+<p><img alt="" src="../docs/Single_Cycle.svg" /></p>
+</li>
+<li>
+<p>Go ahead and modify the codebase to support the MIPS slt instruction.
+Hint: you'll need to modify <code>execute.v</code></p>
+<p>You can also refer to the truth table <a href="#truth-table">below</a>.</p>
+</li>
+<li>
+<p>How can you verify the <code>slt</code> instruction is now working? What might you have to change in <code>fetch.v</code>?</p>
+<p>Go ahead and implement those changes.</p>
+<p>Insert a screen capture of the waveform that shows that slt now works.</p>
+</li>
+<li>
+<p><em>Extra Credit:</em> modify the codebase to support the MIPS <code>j</code>, <code>jal</code>, <code>lui</code> and <code>ori</code> instructions. <em>(5 points for each working instruction. You can implement any one, few or all of these).</em></p>
+</li>
+</ol>
+<h1 id="what-to-submit">What to Submit<a class="headerlink" href="#what-to-submit" title="Permanent link">&para;</a></h1>
+<p>You need to submit a zip folder of your updated ``rtl" folder.</p>
+<h1 id="some-notes">Some Notes<a class="headerlink" href="#some-notes" title="Permanent link">&para;</a></h1>
+<p>Here are some things to keep in mind as you do the assignment.</p>
+<ul>
+<li>The verilog codebase itself isn't very representative of well designed RTL. The codebase itself reflects the architecture presented in the slides, which was unfortunately designed from a circuit level.</li>
+<li>Technically - in a real processor, you should
+be setting the value of a register before you use
+it if you haven't done so since the processor restarted. In the codebase, for simplicity from the student's perspective, each register is initialized to the value of its number index.</li>
+<li>A process block such as <code>always</code> executes anytime 
+any of its arguments change state. If you have <code>always(*)</code>,
+the process block executes anytime any inputs in
+the module change state which effectively implements
+combinational logic.</li>
+<li>You should become familiar with the concatenation and
+replication operators <a href="http://www.asic-world.com/verilog/operators2.html">here</a></li>
+<li><code>control.v</code> could technically be a part of <code>decode.v</code></li>
+</ul>
+<h1 id="truth-table">Truth Table<a class="headerlink" href="#truth-table" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="left">Opcode</th>
+<th align="right">ALUOp</th>
+<th align="left">Operation</th>
+<th align="left">Function</th>
+<th align="left">ALU function</th>
+<th align="right">ALU control</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">lw</td>
+<td align="right">00</td>
+<td align="left">load word</td>
+<td align="left">XXXXXX</td>
+<td align="left">add</td>
+<td align="right">010</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="left">sw</td>
+<td align="right">00</td>
+<td align="left">store word</td>
+<td align="left">XXXXXX</td>
+<td align="left">add</td>
+<td align="right">010</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="left">beq</td>
+<td align="right">01</td>
+<td align="left">branch equal</td>
+<td align="left">XXXXXX</td>
+<td align="left">subtract</td>
+<td align="right">110</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="left">R-type</td>
+<td align="right">10</td>
+<td align="left">add</td>
+<td align="left">100000</td>
+<td align="left">add</td>
+<td align="right">010</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="left">R-type</td>
+<td align="right">10</td>
+<td align="left">subtract</td>
+<td align="left">100010</td>
+<td align="left">subtract</td>
+<td align="right">110</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="left">R-type</td>
+<td align="right">10</td>
+<td align="left">AND</td>
+<td align="left">100100</td>
+<td align="left">AND</td>
+<td align="right">000</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="left">R-type</td>
+<td align="right">10</td>
+<td align="left">OR</td>
+<td align="left">100101</td>
+<td align="left">OR</td>
+<td align="right">001</td>
+</tr>
+<tr>
+<td align="right">7</td>
+<td align="left">R-type</td>
+<td align="right">10</td>
+<td align="left">set-on-less-than</td>
+<td align="left">101010</td>
+<td align="left">set-on-less-than</td>
+<td align="right">111</td>
+</tr>
+</tbody>
+</table></div>
+        
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        
+        <hr>
+        <p>
+        <small>Built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+        <small>Developed by <a href="mailto:yimmanuel3@gatech.edu">Yehowshua Immanuel</a>. Maintained by <a href="mailto:tushar@ece.gatech.edu">Tushar Krishna</a></small>
+        </p>
+
+        
+        
+    </footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/bash.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/python.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/verilog.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/c.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/c++.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

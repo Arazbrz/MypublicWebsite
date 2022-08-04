@@ -1,0 +1,21 @@
+Mnemonic,Instruction,
+ALNV.PS,Floating Point Align Variable,64-bit FPU Only
+CEIL.L.fmt,Floating Point Ceiling Convert to Long Fixed Point,64-bit FPU Only
+CEIL.W.fmt,Floating Point Ceiling Convert to Word Fixed Point,
+CVT.D.fmt,Floating Point Convert to Double Floating Point,
+CVT.L.fmt,Floating Point Convert to Long Fixed Point,64-bit FPU Only
+CVT.PS.S,Floating Point Convert Pair to Paired Single,64-bit FPU Only
+CVT.S.PL,Floating Point Convert Pair Lower to Single Floating Point,64-bit FPU Only
+CVT.S.PU,Floating Point Convert Pair Upper to Single Floating Point,64-bit FPU Only
+CVT.S.fmt,Floating Point Convert to Single Floating Point,
+CVT.W.fmt,Floating Point Convert to Word Fixed Point,
+FLOOR.L.fmt,Floating Point Floor Convert to Long Fixed Point,64-bit FPU Only
+FLOOR.W.fmt,Floating Point Floor Convert to Word Fixed Point,
+PLL.PS,Pair Lower Lower,64-bit FPU Only
+PLU.PS,Pair Lower Upper,64-bit FPU Only
+PUL.PS,Pair Upper Lower,64-bit FPU Only
+PUU.PS,Pair Upper Upper,64-bit FPU Only
+ROUND.L.fmt,Floating Point Round to Long Fixed Point,64-bit FPU Only
+ROUND.W.fmt,Floating Point Round to Word Fixed Point,
+TRUNC.L.fmt,Floating Point Truncate to Long Fixed Point,64-bit FPU Only
+TRUNC.W.fmt,Floating Point Truncate to Word Fixed Point,

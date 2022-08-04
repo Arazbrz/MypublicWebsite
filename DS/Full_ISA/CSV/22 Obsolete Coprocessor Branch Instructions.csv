@@ -1,0 +1,3 @@
+Mnemonic,Instruction
+BC2FL,Branch on COP2 False Likely
+BC2TL,Branch on COP2 True Likely

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My Portofolio">
+    <meta name="author" content="Araz B Karimi">
+    
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>Pipelined Processor - Araz Karimi | Personal Website</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="../../..">Araz Karimi | Personal Website</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../../ECE/overview.md">Electrical Engineering</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../../DS/overview.md">Example Projects</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../overview.md">Contact</a>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#required-tools-for-this-lab">Required Tools for this lab</a></li>
+        <li class="first-level "><a href="#lab-assignment-2">Lab Assignment 2</a></li>
+            <li class="second-level"><a href="#pretask">Pretask:</a></li>
+                
+        <li class="first-level "><a href="#testing-and-debugging">Testing and Debugging</a></li>
+        <li class="first-level "><a href="#submission">Submission</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+
+<H1>Pipelined Processor</H1>
+
+
+
+<p><b>Author:</b> Authors - Yehowshua Immanuel, Saloni Oswal, Tushar Krishna</p>
+
+
+
+<a href="../pdfs/pipelined.pdf"><strong>PDF Version</strong></a>
+
+
+<h1 id="required-tools-for-this-lab">Required Tools for this lab<a class="headerlink" href="#required-tools-for-this-lab" title="Permanent link">&para;</a></h1>
+<ul>
+<li><a href="/resources/brew/brew">Brew</a></li>
+<li><a href="/resources/cocotb/cocotb">iverilog</a></li>
+<li><a href="/resources/VCD/vcd/">GTKwave or Scansion</a></li>
+</ul>
+<h1 id="lab-assignment-2">Lab Assignment 2<a class="headerlink" href="#lab-assignment-2" title="Permanent link">&para;</a></h1>
+<p><em>80 points</em></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The pipeline implementation in this lab probably has
+a number of errors and is not perfect, but is presented
+nonetheless as is for teaching purposes.
+The processor supports the following instructions. The test cases that we run will ONLY include these instructions so you do not need to worry about your processor possibly encountering any other instructions. </p>
+<p>ADD | SUB | LW | SW | OR | AND | SLT | BEQ</p>
+</div>
+<p>First click <a href="../assignment.zip">here</a> to download the lab.
+Change into the <code>rtl</code> directory and run <code>make</code> to
+generate the <code>sim.vcd</code>, and then open it.</p>
+<p>In this lab, you will be implementing the following:</p>
+<h3 id="pretask">Pretask:<a class="headerlink" href="#pretask" title="Permanent link">&para;</a></h3>
+<p>Similar to the previous lab, draw a block diagram and mark the data signals to drive the forward/stall using the signals in the modules. This will be helpful for your implementation.</p>
+<ol>
+<li><em>(Task 1: 20 points)</em>. Add support for the load-to-use stall. For example, if a <code>lw</code> 
+instruction produces data used by an immediately following 
+instruction, one stall cycle should be included between the <code>lw</code> and the 
+immediately following instruction. </li>
+</ol>
+<p>Currently the processor does not stall when the instruction following the load depends on it.
+The logic that needs to be repaired to add load-to-use stall is in the file <code>STALL_CONT.sv</code>. 
+You can use op_stall signal.</p>
+<pre class="highlight"><code class="language-verilog">    assign RS_EX_hazard  = 0;
+    assign RS_MEM_hazard = 0;
+    assign RS_WB_hazard  = 0;
+
+    //Check to see if any of the stages have RS hazards
+    logic RS_hazard;
+    assign RS_hazard = RS_EX_hazard | RS_MEM_hazard | RS_WB_hazard;
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Check if there is a hazard on RT
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //(rt(IRID)==destEX)  &amp;&amp; use_rt(IRID) &amp;&amp; RegWriteEX     or
+    //(rt(IRID)==destMEM) &amp;&amp; use_rt(IRID) &amp;&amp; RegWriteMEM    or
+    //(rt(IRID)==destWB)  &amp;&amp; use_rt(IRID) &amp;&amp; RegWriteWB
+    logic RT_EX_hazard  ;
+    logic RT_MEM_hazard ;
+    logic RT_WB_hazard  ;
+    assign RT_EX_hazard  = 0;
+    assign RT_MEM_hazard = 0;
+    assign RT_WB_hazard  = 0;</code></pre>
+<p>For example, <code>RT_EX_hazard</code> is not always <code>0</code>, it is sometimes 
+<code>1</code>. To give you a hint, <code>RT_EX_hazard</code> depends on 
+<code>ip_dest_EX</code>, <code>use_RT</code>, and <code>ip_RegWrite_EX</code>.</p>
+<ol>
+<li>
+<p><em>(Task 2: 40 points)</em>. Implement data forwarding to the EX stage. There is a blank 
+module called <code>FWD_CONT.sv</code> already created for you and instantiated within MIPS.sv. 
+Feel free to modify the input/output ports if required in your implementation. 
+Just how you checked for hazards in the <code>STALL_CONT.sv</code> file, you will check for hazards 
+and forward the correct value from EX/MEM or MEM/WB stage to the execute unit.</p>
+</li>
+<li>
+<p><em>(Task 3: 20 points)</em>. Implement flushing in the pipeline. Assume branches are predicted as not taken. 
+Thus, the fetch stage will keep fetching instructions through PC+4 until the branch
+ condition is resolved. Note that if the branch is taken, then the instructions which
+  were speculatively fetched would have to be flushed. Flushing out will mean clearing 
+  out the relevant (before branch resolution) registers.</p>
+</li>
+</ol>
+<p>It might help to start by filling out the table below.
+The number at the top of the table represent the cycle count.
+You can access the cycle count by viewing the <code>cycle_cnt</code>
+signal in <code>MIPS_pipelined_tb</code> in the waveform viewer.</p>
+<p>You'll notice that the first instruction in the table has 
+already been filled in for you. Also, if you open 
+<code>IFETCH.sv</code>, you'll notice that the instructions in the
+table below match those in the <code>inst_ram</code></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+<th>16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lw $2, 0</td>
+<td>F</td>
+<td>D</td>
+<td>E</td>
+<td>M</td>
+<td>WB</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>lw $3, 0x4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>add $1, $2, $3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>You can use a combination of lw, add, sub, beq to test out stalling, forwarding, and flushing.</p>
+<h1 id="testing-and-debugging">Testing and Debugging<a class="headerlink" href="#testing-and-debugging" title="Permanent link">&para;</a></h1>
+<p>To help you debug as well as better understand the tasks of lab 2, we've provided the waveforms for some of the tests that are running in Gradescope. Their names below correspond to the test names you see in Gradescope. You are NOT REQUIRED to match these waveforms. They are only here to help you debug the test cases and show what the proper execution of the test cases should be in order to pass. The waveforms may even contain irrelevant wires and signals, but ultimately the most important considerations for our cases are the register and memory values as these are what ensure functional correctness and the proper implementation of the 5 stage in-order pipeline. You can decode the instruction DRAM values if you want to know the actual instructions that the test cases run. </p>
+<p><em>Please check canvas for the sample debugging waveforms</em></p>
+<h1 id="submission">Submission<a class="headerlink" href="#submission" title="Permanent link">&para;</a></h1>
+<p>To clarify:
+1. First implement stalling and verify that it is working properly. 
+2. Once stalling works implment forwarding. Verify forwarding is working by seeing only one stall in the case with a lw RAW. This is the case where the data is only avaliable after memory stage (you want to implement stalling first in order to verify that data is not being taken incorrectly in any case)
+3. Implement flushing and verify functionality</p>
+<p>For submission, please submit your tarball to Gradescope under the Lab2 Pipelining Assignment. To generate the tarball</p>
+<ul>
+<li>
+<p>If you're using the files in the regular assignment directory, simply just run make submit on your terminal where the Makefile is located (same as running make to generate your waveform). </p>
+</li>
+<li>
+<p>If you're using files in the __MACOSX directory, run the bash script <code>create_submission.sh</code> in the root directory of the assignment. </p>
+</li>
+</ul>
+<p>After performing either of the two actions above, you'll end up with a file titled ece3058_lab2_submission.tar.gz that you will submit to Gradescope. </p>
+<p>Make sure you add comments for the changes. Do NOT submit 3 different RTL directories for the different tasks</p></div>
+        
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        
+        <hr>
+        <p>
+        <small>Built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+        <small>Developed by <a href="mailto:yimmanuel3@gatech.edu">Yehowshua Immanuel</a>. Maintained by <a href="mailto:tushar@ece.gatech.edu">Tushar Krishna</a></small>
+        </p>
+
+        
+        
+    </footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/bash.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/python.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/verilog.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/c.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/c++.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

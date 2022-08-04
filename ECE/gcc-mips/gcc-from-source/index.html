@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My Portofolio">
+    <meta name="author" content="Araz B Karimi">
+    
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>Gcc from source - Araz Karimi | Personal Website</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="../../..">Araz Karimi | Personal Website</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../overview.md">Electrical Engineering</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../../DS/overview.md">Example Projects</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../../CN/overview.md">Contact</a>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#see-also">See Also</a></li>
+            <li class="second-level"><a href="#external-links">External Links</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+
+
+
+
+
+
+<p><strong>Copied under CC BY-SA 3.0 from:</strong> <a href="http://www.theairportwiki.com/index.php?title=Building_a_cross_compile_of_GCC_for_MIPS_on_OS_X">The Airport Wiki</a></p>
+<hr />
+<p>This guide will outline the steps necessary to build a cross compilation of GCC for a target architecture of MIPS on a OS X host machine. GCC (The GNU Compiler Collection) is an open source compiler used for compiling computer code written in high level languages such as C and C++. The compiler is need to convert the high level / human readable language code into machine level / assembly language code.</p>
+<p>As of 2014, Apple is natively shipping the LLVM compiler with OS X (10.9) / Mavericks. I was unable to compile binutils for a target architecture of MIPS using the native LLVM compiler provided by Apple. An alternative I chose was to install GCC (4.8.2) using the Homebrew package management system. In order to install GCC via Homebrew, Homebrew must be installed on the host system first. (duh)</p>
+<p>The steps for installing homebrew can be found at <a href="http://brew.sh">brew.sh</a></p>
+<p>Alright, so your still reading, so that probably means you have Homebrew installed on your system, your just bored, or your reading just for the sake of learning something new. In that case, lets continue.</p>
+<p>In your favorite OS X terminal application run the following commands to get GCC installed via Homebrew.</p>
+<pre class="highlight"><code class="language-bash">$ brew tap homebrew/versions
+$ brew install gcc48</code></pre>
+<p>Once GCC 4.8.x is installed the next step is to download the required packages to build a cross compile of GCC. From what I have read on the internet, in order to build a GCC toolchain the <a href="http://www.gnu.org/software/binutils/">binutils</a> package is required. So your probably gonna want to download it.</p>
+<p><strong>Recommendation:</strong> I would download the following packages to the following location,* <code>/opt/cross/src/</code>
+To download binutils run the following command in a shell.</p>
+<pre class="highlight"><code class="language-bash">$ wget ftp://sourceware.org/pub/binutils/releases/binutils-2.24.tar.gz</code></pre>
+<p><strong>Note:</strong> <em>If you don't have</em> <code>wget</code> <em>installed on your system you can install it with following command,</em></p>
+<pre class="highlight"><code class="language-bash">$ brew install wget</code></pre>
+<p>Next, download GCC source code,</p>
+<pre class="highlight"><code class="language-bash">$ wget http://www.netgull.com/gcc/releases/gcc-4.8.2/gcc-4.8.2.tar.gz</code></pre>
+<p>Note: This link may be broken in the future, so to get the latest version of GCC head on over to <a href="http://gcc.gnu.org">gcc.gnu.org</a></p>
+<p>Now extract the following newly downloaded packages with the following command,</p>
+<pre class="highlight"><code class="language-bash">$ tar xzf binutils-2.24.tar.gz
+$ tar xzf gcc-4.8.2.tar.gz</code></pre>
+<p>Next, download GCC dependencies / prerequisites,</p>
+<pre class="highlight"><code class="language-bash">$ cd gcc-4.8.2
+$ ./contrib/download_prerequisites
+$ cd ..</code></pre>
+<p><strong>Note:</strong> <em>The GCC prerequisites are **mprf*</em>, <strong>gmp</strong>, and <strong>mpc*</strong>
+Next, create the GCC binary folder / directory.</p>
+<pre class="highlight"><code class="language-bash">$ mkdir mips-gcc</code></pre>
+<p>Next, the following environment variables need to be set in order to use the homebrew version of GCC to cross compile GCC for the MIPS architecture.</p>
+<pre class="highlight"><code class="language-bash">$ export CC=/usr/local/bin/gcc-4.8
+$ export CXX=/usr/local/bin/g++-4.8
+$ export CPP=/usr/local/bin/cpp-4.8
+$ export LD=/usr/local/bin/gcc-4.8
+$ export PREFIX=/opt/cross/gcc-mips
+$ export CFLAGS=-Wno-error=deprecated-declarations</code></pre>
+<p><strong>Note:</strong> <em>To check if the environment variables are set correctly run the following command,</em></p>
+<pre class="highlight"><code class="language-bash">$ echo $CC</code></pre>
+<p>The above command should print something like,
+<code>/usr/local/bin/gcc-4.8</code>
+Next, configure and build binutils.</p>
+<pre class="highlight"><code class="language-bash">$ mkdir binutils-build
+$ cd binutils-build
+$ ../binutils-2.24/configure --target=mips-netbsd-elf --prefix=$PREFIX
+$ make all 2&gt;&amp;1 | tee make.log
+$ make install
+$ cd ..</code></pre>
+<p><strong>Note:</strong> <em>binutils should now be installed in</em> <code>/opt/cross/gcc-mips/mips-gcc/bin</code>
+The newly created binaries should be added to your path when building GCC, so run the following command,</p>
+<pre class="highlight"><code class="language-bash">$ export PATH=${PREFIX}/bin:${PATH}</code></pre>
+<p>Next, download, unpack newlib into <code>/opt/cross/src</code>, then make a directory called,<code>newlib-build</code></p>
+<pre class="highlight"><code class="language-bash">$ wget ftp://sourceware.org/pub/newlib/newlib-2.1.0.tar.gz
+$ tar xzf newlib-2.1.0.tar.gz
+$ mkdir newlib-build</code></pre>
+<p>Now, it's time to configure and build a bootstrap cross compile of GCC :)</p>
+<pre class="highlight"><code class="language-bash">$ mkdir gcc-build
+$ cd gcc-build
+$ ../gcc-4.8.2/configure --target=mips-netbsd-elf --prefix=$PREFIX --with-newlib --without-headers \ 
+--with-gnu-as --with-gnu-ld --disable-shared --enable-languages=c
+$ make all-gcc 2&gt;&amp;1 | tee make.log
+$ make install-gcc </code></pre>
+<p>Now, at this point you might think you can compile a simple <strong>Hello MIPS</strong> program using the following code,</p>
+<pre class="highlight"><code class="language-c">/* Simple C program. */
+#include&lt;stdio.h&gt;
+
+int main() {
+printf("Hello MIPS! \n");
+
+return 0;
+}</code></pre>
+<p>However it won't compile ...yet.</p>
+<p>Next, build the newlib C runtime library</p>
+<pre class="highlight"><code class="language-bash">$ cd newlib-build
+$ ../newlib-2.1.0/configure --target=mips-netbsd-elf --prefix=$PREFIX
+$ make all 2&gt;&amp;1 | tee make.log
+$ make install</code></pre>
+<p>Finally, it is time to build a complete cross compiler.</p>
+<pre class="highlight"><code class="language-bash">$ cd gcc-build &amp;&amp; rm -rf *
+$ ../gcc-4.8.2/configure --target=mips-netbsd-elf --prefix=$PREFIX --with-gnu-as \
+ --with-gnu-ld --enable-languages=c,c++ --disable-multilib --with-newlib
+$ make all 2&gt;&amp;1 | tee make.log
+$ make install
+$ cd ..</code></pre>
+<p>Now the simple <strong>Hello MIPS</strong> program can be compiled using the freshly built compiler.</p>
+<pre class="highlight"><code class="language-bash">$ mips-elf-gcc -Tidt.ld hello.c -o hello</code></pre>
+<p>If all goes well, you have just compiled <strong>Hello MIPS</strong> program with the above command and have a MIPS binary ready for testing. Thanks for reading, and happy building.</p>
+<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<h3 id="external-links">External Links<a class="headerlink" href="#external-links" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="http://apple.stackexchange.com/questions/38222/how-do-i-install-gcc-via-homebrew">apple.stackexchange.com thread on installing GCC via homebrew</a></li>
+<li><a href="http://nerdishbynature.blogspot.com/2013/01/cross-compiling-gcc-for-mips.html">Cross compiling GCC for MIPS on Linux/Debian</a></li>
+<li><a href="http://wiki.osdev.org/GCC_Cross-Compiler">osdev.org GCC Cross Compiler article</a></li>
+<li><a href="https://bugs.launchpad.net/gcc-arm-embedded/+bug/1254507">Compiling binutils on OS X Mavericks</a></li>
+<li><a href="http://gcc.gnu.org/wiki/Building_Cross_Toolchains_with_gcc?action=AttachFile&amp;do=view&amp;target=billgatliff-toolchains.pdf">An Introduction to the GNU Compiler and Linker</a></li>
+<li><a href="http://www.linux-mips.org/wiki/Toolchains">Toolchains - LinuxMIPS</a></li>
+<li><a href="http://gcc.gnu.org/wiki/FAQ?highlight=%28%28FAQ%29%29">GCC Wiki FAQ</a></li>
+<li><a href="http://www-inst.eecs.berkeley.edu/~cs162/sp14/Nachos/cross-compiler.html">Nacho's Cross Compile of GCC for MIPS</a></li>
+<li><a href="http://gcc.gnu.org/wiki/InstallingGCC">GNU.org Installing GCC</a></li>
+<li><a href="http://gcc.gnu.org/wiki/Building_Cross_Toolchains_with_gcc">GNU.org Building a Cross Toolchain with GCC</a></li>
+<li><a href="http://www.ethernut.de/en/documents/cross-toolchain-osx.html">AVR/ARM Cross Toolchains for OS X</a></li>
+<li><a href="http://gcc.gnu.org/install/specific.html#mips-x-x">GNU Host/Target specific installation notes</a></li>
+</ul></div>
+        
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        
+        <hr>
+        <p>
+        <small>Built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+        <small>Developed by <a href="mailto:yimmanuel3@gatech.edu">Yehowshua Immanuel</a>. Maintained by <a href="mailto:tushar@ece.gatech.edu">Tushar Krishna</a></small>
+        </p>
+
+        
+        
+    </footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/bash.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/python.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/verilog.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/c.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/c++.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

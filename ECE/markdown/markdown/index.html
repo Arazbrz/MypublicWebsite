@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My Portofolio">
+    <meta name="author" content="Araz B Karimi">
+    
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>Markdown to LaTeX+PDF with Pandoc - Araz Karimi | Personal Website</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="../../..">Araz Karimi | Personal Website</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../overview.md">Electrical Engineering</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../../DS/overview.md">Example Projects</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../../CN/overview.md">Contact</a>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#what">What?</a></li>
+        <li class="first-level "><a href="#how">How?</a></li>
+        <li class="first-level "><a href="#why">Why?</a></li>
+        <li class="first-level "><a href="#getting-started">Getting Started</a></li>
+        <li class="first-level "><a href="#finding-a-suitable-editor">Finding a Suitable Editor</a></li>
+        <li class="first-level "><a href="#creating-a-pdf">Creating a PDF</a></li>
+            <li class="second-level"><a href="#testmd">test.md</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+
+<H1>Markdown to LaTeX+PDF with Pandoc</H1>
+
+
+
+<p><b>Author:</b> Yehowshua Immanuel</p>
+
+
+
+<a href="../pdfs/markdown.pdf"><strong>PDF Version</strong></a>
+
+
+<h2 id="what">What?<a class="headerlink" href="#what" title="Permanent link">&para;</a></h2>
+<p>You can write your assignments in Markdown and render them 
+into PDF.
+That's how this website was built.</p>
+<h2 id="how">How?<a class="headerlink" href="#how" title="Permanent link">&para;</a></h2>
+<p>The Python MkDocs builder consumed the markdown and emitted HTML.
+You'll also notice that each page has a PDF link.</p>
+<p>This was accomplished by a post-build run the used pandoc
+to run over the markdown again and generate PDFs using
+LaTeX.</p>
+<h2 id="why">Why?<a class="headerlink" href="#why" title="Permanent link">&para;</a></h2>
+<p>You should get used to writing in Markdown+LaTeX as the LaTeX
+typesetting engine has first class performance.</p>
+<p>In addition, Markdown is widely used in generating documentation
+for many modern open source projects. LaTeX is also de-facto in academia
+and is excellent for generating technical and or mathematical documents.</p>
+<h1 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
+<p>First you will need to install the full LaTex distribution.</p>
+<p>Modify for you Linux distro if not Ubuntu.</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MacOS</td>
+<td><a href="https://tug.org/mactex/mactex-download.html">https://tug.org/mactex/mactex-download.html</a></td>
+</tr>
+<tr>
+<td>Linux(Ubuntu) or WSL</td>
+<td><code>sudo apt install texlive-full</code></td>
+</tr>
+</tbody>
+</table>
+<p>Next you need to install pandoc. Make sure you have
+<a href="/resources/brew/brew">brew</a> installed. </p>
+<pre class="highlight"><code class="language-bash">brew install pandoc</code></pre>
+<h1 id="finding-a-suitable-editor">Finding a Suitable Editor<a class="headerlink" href="#finding-a-suitable-editor" title="Permanent link">&para;</a></h1>
+<p>Next you want to find a suitable editor to help you edit
+your markdown. I like VsCode. It has an especially good
+markdown mode which is accessible with <code>command</code> + 
+<code>shift</code> + <code>v</code> on Mac, or <code>ctrl</code>+<code>shift</code>+<code>v</code> on PC.</p>
+<p>I like to have preview mode on one side, and the markdown
+editor mode on the other using VsCode split screen.</p>
+<p><img alt="Editing markdown in VsCode" src="../VsCode.png" /></p>
+<h1 id="creating-a-pdf">Creating a PDF<a class="headerlink" href="#creating-a-pdf" title="Permanent link">&para;</a></h1>
+<p>Paste the following into a file called:</p>
+<h2 id="testmd">test.md<a class="headerlink" href="#testmd" title="Permanent link">&para;</a></h2>
+<pre class="codehilite"><code>---
+author: John Doe
+date: January 1, 2020
+geometry: margin=1in
+title: Sample Markdown to LaTeX+PDF with Pandoc
+header-includes:
+  - \hypersetup{colorlinks=true}
+---
+
+# 1.
+
+I really like computer architecture. I like computer 
+architecture more than:
+
+ - money
+ - gold
+ - cars
+ - iPhones
+
+## This is a subsection
+
+The proper procedure for starting a new computer architecture
+design involves:
+
+1. Coming up with the high-level design sketch
+2. Initsialising your code space with git VCS
+3. Designing each module one by one
+4. Commiting changes to git often
+4. Always writing unit-tests or testbenches for your
+code
+
+# 2.
+Open source isn't free - its often funded by institutions.
+
+This is a table:
+
+| Project      | Roots                      |
+|--------------|----------------------------|
+| Verilator    | DEC.                       |
+| BSD Unix     | Berkeley                   |
+| Clang        | Apple, Berkeley University |
+| Clang        | Berkeley                   |
+| Chisel       | Berkeley                   |
+| R            | Berkeley                   |
+| Berkeley Sockets | Berkeley               |
+| GCC          | MIT                        |
+| Xorg         | MIT                        |
+| Bluespec     | MIT                        |
+| MIPS         | Stanford                   |
+| ROS          | Stanford                   |
+| Theano       | University of Montreal     |
+| Firefox      | Netscape, Google           |
+| TypeScript   | Microsoft                  |
+| Linux Kernel | RedHat, IBM, Google        |
+| Chromium     | Google                     |
+| Android      | Google                     |
+
+# This is a third section
+
+## Python
+
+Python is a great language for rapid prototyping
+and unit-testing.
+
+Although Python is itself slow, it is often
+coupled with speedy C/C++ backends allowing
+for the best of both worlds.
+
+One example of such is Python numpy.
+
+### Sub-subsection
+
+Some python code
+
+```python
+def sum(a,b)
+    return a+b
+```
+</code></pre>
+
+<p>Now run the command:</p>
+<pre class="highlight"><code class="language-bash">pandoc -s test.md -o test.pdf</code></pre>
+<p>Now open <code>test.pdf</code>.</p>
+<p>Notice how the Python syntax is highlighted for you.</p></div>
+        
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        
+        <hr>
+        <p>
+        <small>Built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+        <small>Developed by <a href="mailto:yimmanuel3@gatech.edu">Yehowshua Immanuel</a>. Maintained by <a href="mailto:tushar@ece.gatech.edu">Tushar Krishna</a></small>
+        </p>
+
+        
+        
+    </footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/bash.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/python.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/verilog.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/c.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/c++.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

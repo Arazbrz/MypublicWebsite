@@ -1,0 +1,10 @@
+Mnemonic,Instruction,
+MFHI,Move From HI Register,
+MFLO,Move From LO Register,
+MOVF,Move Conditional on Floating Point False,
+MOVN,Move Conditional on Not Zero,
+MOVT,Move Conditional on Floating Point True,
+MOVZ,Move Conditional on Zero,
+MTHI,Move To HI Register,
+MTLO,Move To LO Register,
+RDHWR,Read Hardware Register,Release 2 Only

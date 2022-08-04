@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My Portofolio">
+    <meta name="author" content="Araz B Karimi">
+    
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>Gentle Intro - Araz Karimi | Personal Website</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="../../..">Araz Karimi | Personal Website</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../../ECE/overview.md">Electrical Engineering</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../../DS/overview.md">Example Projects</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../overview.md">Contact</a>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#background-information">Background Information</a></li>
+            <li class="second-level"><a href="#what-is-rtl-or-hdl">What is RTL or HDL?</a></li>
+                
+                <li class="third-level"><a href="#synthesizers">Synthesizers</a></li>
+                <li class="third-level"><a href="#higher-level-languages-and-simulation">Higher Level Languages and Simulation</a></li>
+                <li class="third-level"><a href="#testbench-or-testbeds">TestBench or TestBeds</a></li>
+        <li class="first-level "><a href="#questions">Questions</a></li>
+        <li class="first-level "><a href="#q1">Q1</a></li>
+        <li class="first-level "><a href="#q2">Q2</a></li>
+            <li class="second-level"><a href="#lets-break-this-up">Let's break this up</a></li>
+                
+            <li class="second-level"><a href="#q21">Q2.1</a></li>
+                
+            <li class="second-level"><a href="#q22">Q2.2</a></li>
+                
+            <li class="second-level"><a href="#q23">Q2.3</a></li>
+                
+        <li class="first-level "><a href="#q3">Q3</a></li>
+            <li class="second-level"><a href="#opening-verilog-in-modelsim">Opening verilog in ModelSim</a></li>
+                
+            <li class="second-level"><a href="#compiling-verilog">Compiling verilog</a></li>
+                
+                <li class="third-level"><a href="#sync_adder_tbv">sync_adder_tb.v</a></li>
+            <li class="second-level"><a href="#q31-modify-the-files">Q3.1 modify the files</a></li>
+                
+            <li class="second-level"><a href="#notes">notes</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+
+<H1>Gentle Intro</H1>
+
+
+
+<p><b>Author:</b> Yehowshua Immanuel, Updated by Andrew Kim</p>
+
+
+
+<a href="../pdfs/intro.pdf"><strong>PDF Version</strong></a>
+
+
+<p>This is a practice lab meant to get you started with the basic concepts needed for future labs.</p>
+<p>Instead of copying and pasting text included in this lab,
+you can download all the files below <a href="../lab0_files.zip">here</a>.</p>
+<h1 id="background-information">Background Information<a class="headerlink" href="#background-information" title="Permanent link">&para;</a></h1>
+<h2 id="what-is-rtl-or-hdl">What is RTL or HDL?<a class="headerlink" href="#what-is-rtl-or-hdl" title="Permanent link">&para;</a></h2>
+<p>A Hardware Description Language(HDL) is purely that. It merely 
+describes hardware both structurally and functionally in the form of code. There are a couple types of HDLs, digital and mixed(digital+analog). This class deals with digital HDLs such as VHDL which you should have seen in ECE2031 (Digital Design Laboratory).</p>
+<p>The most common HDLs include VHDL and Verilog. In the labs, we will use mostly Verilog. This can be a good reference for verilog: <a href="https://www.asic-world.com/verilog/veritut.html">https://www.asic-world.com/verilog/veritut.html</a> . If you want additional help with verilog, here is another primer that is helpful <a href="../Verilog_Primer_main.pdf">Verilog primer</a></p>
+<p>The digital subset of HDL is usually referred to as Register Transfer
+Logic(RTL). RTLs aren't very useful by themselves. Typically, they might
+be passed to a synthesizer which reduces the RTL into a gate
+list that describes all the connections between various gates.
+A gate list is more commonly known as a netlist.</p>
+<h3 id="synthesizers">Synthesizers<a class="headerlink" href="#synthesizers" title="Permanent link">&para;</a></h3>
+<p>There are different kinds of synthesizers. Some synthesizer
+frameworks target FPGAs while others target physical fabrication
+or VLSI. In VLSI, RTL is just the first step in a long laborious
+sequence of tasks that usually results in a finished physical
+chip.</p>
+<p>All synthesizers typically support both VHDL and Verilog.
+Writing Verilog or VHDL is very primitive however, so it is
+not uncommon to use a higher level language to generate Verilog
+(I heard somewhere that Perl is sometimes used in industry
+to generate Verilog).</p>
+<h3 id="higher-level-languages-and-simulation">Higher Level Languages and Simulation<a class="headerlink" href="#higher-level-languages-and-simulation" title="Permanent link">&para;</a></h3>
+<p>Using a higher level language can make complex tasks such as generating
+an out-of-order, multi-cache, multi-issue, pipelined processor
+easier.</p>
+<h3 id="testbench-or-testbeds">TestBench or TestBeds<a class="headerlink" href="#testbench-or-testbeds" title="Permanent link">&para;</a></h3>
+<p>After you write your HDL that creates a circuit, you will need something else to test the functionality. Testbenches are HDL code written to test another HDL module (device under test or DUT). Testbenchess can output data to be analyzed as well as automatically test if the values are correctly generated.</p>
+<hr />
+<h1 id="questions">Questions<a class="headerlink" href="#questions" title="Permanent link">&para;</a></h1>
+<h1 id="q1">Q1<a class="headerlink" href="#q1" title="Permanent link">&para;</a></h1>
+<p>What is the first thing that happens when you turn on your processor?</p>
+<p>Please refer to page 25, section 5.2.4 of the MIPS32 Manual Volume III <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<h1 id="q2">Q2<a class="headerlink" href="#q2" title="Permanent link">&para;</a></h1>
+<p>Computer programs can have many different sub-routines spread
+amongst different files. RTLs like verilog are no different. 
+But instead of sub-routines, textual representations of physical
+hardware can be separated into distinct components called modules.</p>
+<p>Below we have a synchronous adder module.</p>
+<p><img alt="full sync adder" src="../full_sync_adder.png" /></p>
+<pre class="highlight"><code class="language-verilog">module sync_adder(Q, a, b, clk, reset);
+
+input wire clk, reset;
+input wire [7:0] a;
+input wire [7:0] b;
+output reg [7:0] Q;
+
+reg [7:0] sum;
+wire [7:0] D;
+
+always @(*)
+    sum = a+b;
+
+assign D = sum;
+
+always @(posedge clk)
+    if (reset == 1)
+        Q &lt;= 0;
+    else
+        Q &lt;= D;
+
+endmodule</code></pre>
+<h2 id="lets-break-this-up">Let's break this up<a class="headerlink" href="#lets-break-this-up" title="Permanent link">&para;</a></h2>
+<pre class="highlight"><code class="language-verilog">module sync_adder(Q, a, b, clk, reset);
+
+input wire clk, reset;
+input wire [7:0] a;
+input wire [7:0] b;
+output reg [7:0] Q;</code></pre>
+<p>These are the definitions of the input and output of the whole module.</p>
+<p><pre class="highlight"><code class="language-verilog">reg [7:0] sum;
+wire [7:0] D;</code></pre>
+Next are internal signals inside of the module. The sum can be implemented as a wire, but for demonstration purposes explained later, it is a register.</p>
+<p><img alt="adder" src="../adder_circle.png" />
+<pre class="highlight"><code class="language-verilog">always @(*)
+    sum = a+b;</code></pre>
+This next bit of verilog represent the circled component. The sum is constantly being generated depending on the values of a and b.</p>
+<p><pre class="highlight"><code class="language-verilog">assign D = sum;</code></pre>
+This next line connects the adder sum output to the D input of the flip flop. <code>assign</code> change the value of the left hand side as soon as the the right had side changes.</p>
+<p><img alt="ff" src="../ff_circle.png" />
+<pre class="highlight"><code class="language-verilog">always @(posedge clk)
+    if (reset == 1)
+        Q &lt;= 0;
+    else
+        Q &lt;= D;</code></pre>
+This represents the internal flip flop. The value is assigned on the positive edge of the clock.</p>
+<h2 id="q21">Q2.1<a class="headerlink" href="#q21" title="Permanent link">&para;</a></h2>
+<p>What is the difference between <code>wire</code> and <code>reg</code>?</p>
+<h2 id="q22">Q2.2<a class="headerlink" href="#q22" title="Permanent link">&para;</a></h2>
+<p>How do <code>wire</code> and <code>reg</code> compare to System Verilog's <code>logic</code>?</p>
+<h2 id="q23">Q2.3<a class="headerlink" href="#q23" title="Permanent link">&para;</a></h2>
+<p>What do you think happens when we assert <code>reset</code>?</p>
+<h1 id="q3">Q3<a class="headerlink" href="#q3" title="Permanent link">&para;</a></h1>
+<p>Now lets simulate the Verilog adder from above. Go to <a href="https://fpgasoftware.intel.com/?product=modelsim_ae#tabs-2">https://fpgasoftware.intel.com/?product=modelsim_ae#tabs-2</a> and make an account. Then make sure you select the "lite" edition and release "20.1.1". Download "ModelSim-Intel FPGA Edition (includes Starter Edition)"</p>
+<h2 id="opening-verilog-in-modelsim">Opening verilog in ModelSim<a class="headerlink" href="#opening-verilog-in-modelsim" title="Permanent link">&para;</a></h2>
+<p>Download the <code>lab0_files.zip</code>. Unzip it and then place it in a directory. Navigate to the directory using ModelSim's command line. First, use the command <code>cd c:/</code> to get to your main C: drive.</p>
+<h2 id="compiling-verilog">Compiling verilog<a class="headerlink" href="#compiling-verilog" title="Permanent link">&para;</a></h2>
+<p>You can run <code>do init.do</code> which will create a design library. Then running <code>do compile.do</code> will compile the sync adder and the test bench. You will see a "work" folder. Open it and right click on sync_adder and click simulate. Right clicking on each w</p>
+<p><img alt="Simulate button" src="../simulate.png" /></p>
+<p>Run</p>
+<p><code>add wave -position insertpoint sim:/sync_adder_tb/*</code></p>
+<p>The waves will be added to the simulator. Running the command</p>
+<p><code>run -a</code></p>
+<p>will run all and you will see waveforms pop up (you may have to close a text editor window). It will look like this</p>
+<p><img alt="Waveform" src="../waveform2.png" /></p>
+<p>(Hint: clicking the Zoom Full or F will fit the signals in your window. Also you can right click on the waves and change the Radix. The a, b, and sum signals are changed to decimal in the image)</p>
+<h3 id="sync_adder_tbv">sync_adder_tb.v<a class="headerlink" href="#sync_adder_tbv" title="Permanent link">&para;</a></h3>
+<p>Lets look at what the test bench does. This section breaks up the sync_adder_tb.v file.</p>
+<pre class="highlight"><code class="language-verilog">module sync_adder_tb;
+//signals needed to test functionality of sync adder
+reg clk, reset;
+reg [7:0] a;
+reg [7:0] b;
+wire [7:0] Q;
+
+//creating a sync adder and connecting signals
+sync_adder DUT(
+.clk(clk),
+.reset(reset),
+.a(a), 
+.b(b),
+.Q(Q)
+); </code></pre>
+<p>This first part creates a test bench module. Included is hardware that will interact with the sync_adder DUT (Device Under Test). Then the hardware in the module is connected to the DUT.</p>
+<pre class="highlight"><code class="language-verilog">initial // initial block runs only once
+    begin
+        clk = 0;
+        //Simple test
+        a = 5;
+        b = 7;
+        reset = 0;
+        #5
+
+        //self-checking
+        a = 1;
+        b = 6;
+        reset = 0;
+        #5
+        if (Q != 7) $display("1+6 failed");
+
+        //self-checking
+        a = 10;
+        b = 15;
+        reset = 0;
+        #5
+        if (Q != 0) $display("10+15 is not 0!");</code></pre>
+<p>The next part assert values to test the DUT. You can see the values for a, b, and reset are being set. The first test is a simple test where the result has to be verified manually. The next two checks show a method to self-check the result. The text in <code>$display()</code> will come onto the command line if the statement is true. You should see one of these statements in your command line after simulating. This section runs once and from begin to end consecutively.</p>
+<pre class="highlight"><code class="language-verilog">always
+    #1 clk = ~clk;</code></pre>
+<p>The last always block runs all the time and changes the clock value.</p>
+<h2 id="q31-modify-the-files">Q3.1 modify the files<a class="headerlink" href="#q31-modify-the-files" title="Permanent link">&para;</a></h2>
+<p>Now modify the testbench above to do <code>4+5=9</code> with self checking. Also write verilog to test the reset functionality of the module.</p>
+<p>Recompile your verilog and fix any errors that pop up. Rerun the simulation. Include a screenshot of the new waveform with your lab.</p>
+<h2 id="notes">notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
+<p>Congratulations!! You just wrote your first testbench.
+A testbench allows you to test your RTL before you 
+deploy it to a chip or FGPA, and before you mix it with
+other RTL.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><a href="https://www.cs.cornell.edu/courses/cs3410/2008fa/MIPS_Vol3.pdf">https://www.cs.cornell.edu/courses/cs3410/2008fa/MIPS_Vol3.pdf</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
+        
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        
+        <hr>
+        <p>
+        <small>Built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+        <small>Developed by <a href="mailto:yimmanuel3@gatech.edu">Yehowshua Immanuel</a>. Maintained by <a href="mailto:tushar@ece.gatech.edu">Tushar Krishna</a></small>
+        </p>
+
+        
+        
+    </footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/bash.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/python.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/verilog.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/c.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/c++.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

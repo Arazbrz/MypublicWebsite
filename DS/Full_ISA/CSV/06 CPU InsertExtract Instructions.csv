@@ -1,0 +1,4 @@
+Mnemonic,Instruction,
+EXT,Extract Bit Field,Release 2 Only
+INS,Insert Bit Field,Release 2 Only
+WSBH,Word Swap Bytes Within Halfwords,Release 2 Only

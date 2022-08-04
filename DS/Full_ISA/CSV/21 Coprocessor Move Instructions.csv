@@ -1,0 +1,7 @@
+Mnemonic,Instruction,
+CFC2,Move Control Word from Coprocessor 2,
+CTC2,Move Control Word to Coprocessor 2,
+MFC2,Move Word from Coprocessor 2,
+MFHC2,Move Word from High Half of Coprocessor 2 Register,Release 2 Only
+MTC2,Move Word to Coprocessor 2,
+MTHC2,Move Word to High Half of Coprocessor 2 Register,Release 2 Only
