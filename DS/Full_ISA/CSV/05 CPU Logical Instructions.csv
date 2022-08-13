@@ -1,9 +1,0 @@
-Mnemonic,Instruction
-AND,And
-ANDI,And Immediate
-LUI,Load Upper Immediate
-NOR,Not Or
-OR,Or
-ORI,Or Immediate
-XOR,Exclusive Or
-XORI,Exclusive Or Immediate

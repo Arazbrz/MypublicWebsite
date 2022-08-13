@@ -1,9 +1,0 @@
-Mnemonic,Instruction
-BEQL,Branch on Equal Likely
-BGEZALL,Branch on Greater Than or Equal to Zero and Link Likely
-BGEZL,Branch on Greater Than or Equal to Zero Likely
-BGTZL,Branch on Greater Than Zero Likely
-BLEZL,Branch on Less Than or Equal to Zero Likely
-BLTZALL,Branch on Less Than Zero and Link Likely
-BLTZL,Branch on Less Than Zero Likely
-BNEL,Branch on Not Equal Likely

@@ -1,9 +1,0 @@
-Mnemonic,Instruction,
-ROTR,Rotate Word Right,Release 2 Only
-ROTRV,Rotate Word Right Variable,Release 2 Only
-SLL,Shift Word Left Logical,
-SLLV,Shift Word Left Logical Variable,
-SRA,Shift Word Right Arithmetic,
-SRAV,Shift Word Right Arithmetic Variable,
-SRL,Shift Word Right Logical,
-SRLV,Shift Word Right Logical Variable,

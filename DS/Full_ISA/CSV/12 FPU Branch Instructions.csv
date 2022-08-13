@@ -1,4 +1,0 @@
-Mnemonic,Instruction
-BC1F,Branch on FP False
-BC1T,Branch on FP True
-C.cond.fmt,Floating Point Compare
