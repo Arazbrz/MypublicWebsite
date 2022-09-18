@@ -10,7 +10,7 @@ body {
 }
 .img-container {
   min-height: 60vh;
-  background: url("../img/contBcg-0.jpeg") center/cover fixed no-repeat;
+  background: url("../IMGG/contBcg-0.jpeg") center/cover fixed no-repeat;
   border: 0.5rem solid var(--mainBlue);
   border-radius: 0.5rem;
   position: relative;
